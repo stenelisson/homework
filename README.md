@@ -5,7 +5,6 @@
 ## Funktsioonid
 - Arvutab erinevate ehitusmaterjalide (betoon, sillustik, liiv, muld) hinna vastavalt kasutaja sisestatud kogusele.
 - Reaalajas summa kuvamine koos kahe kümnendkoha täpsusega.
-- Minimaalne ja lihtne.
 
 ## Kasutamine
 

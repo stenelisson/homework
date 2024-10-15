@@ -8,4 +8,5 @@
 
 ## Kasutamine
 
-Sisesta materjalide kogused tonnides ja klõpsa nuppu **Arvuta kogu summa**.
+1) Kui kasutad GitHubi, klooni projekt käsuga: git clon https://github.com/stenelisson/homework.git
+2) Sisesta materjalide kogused tonnides ja klõpsa nuppu **Arvuta kogu summa**.

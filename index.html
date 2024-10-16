@@ -75,6 +75,8 @@
             <td><input type="number" id="muld-kogus" min="0" step="0.01" value="0"></td>
         </tr>
     </table>
+    
+    <p>Kui kogusumma on üle 500 euro, siis saab 15% soodustust.</p>
 
     <button onclick="arvutaKogumaksumus()">Arvuta kogu summa</button>
 
@@ -82,31 +84,36 @@
 </div>
 
 <script>
-    function arvutaKogumaksumus() {
-        // Hinnad ja kogused
-        let betoonHind = parseFloat(document.getElementById("betoon-hind").textContent);
-        let sillustikHind = parseFloat(document.getElementById("sillustik-hind").textContent);
-        let liivHind = parseFloat(document.getElementById("liiv-hind").textContent);
-        let muldHind = parseFloat(document.getElementById("muld-hind").textContent);
+function arvutaKogumaksumus() {
+    // Materjalide info massiivis
+    const ehitusmaterjalid = [
+        { nimi: "Betoon", hind: parseFloat(document.getElementById("betoon-hind").textContent), kogus: parseFloat(document.getElementById("betoon-kogus").value) },
+        { nimi: "Sillustik", hind: parseFloat(document.getElementById("sillustik-hind").textContent), kogus: parseFloat(document.getElementById("sillustik-kogus").value) },
+        { nimi: "Liiv", hind: parseFloat(document.getElementById("liiv-hind").textContent), kogus: parseFloat(document.getElementById("liiv-kogus").value) },
+        { nimi: "Muld", hind: parseFloat(document.getElementById("muld-hind").textContent), kogus: parseFloat(document.getElementById("muld-kogus").value) }
+    ];
 
-        // Kasutaja sisestatud kogused
-        let betoonKogus = parseFloat(document.getElementById("betoon-kogus").value);
-        let sillustikKogus = parseFloat(document.getElementById("sillustik-kogus").value);
-        let liivKogus = parseFloat(document.getElementById("liiv-kogus").value);
-        let muldKogus = parseFloat(document.getElementById("muld-kogus").value);
+    let kogusumma = 0;
 
-        // Arvutame kogumaksumuse
-        let betoonMaksumus = betoonKogus * betoonHind;
-        let sillustikMaksumus = sillustikKogus * sillustikHind;
-        let liivMaksumus = liivKogus * liivHind;
-        let muldMaksumus = muldKogus * muldHind;
+    // Kasutame forEach tsüklit, et käia läbi kõik materjalid ja arvutada igaühe maksumus
+    ehitusmaterjalid.forEach(materjal => {
+        let materjalMaksumus = materjal.hind * materjal.kogus;
+        kogusumma += materjalMaksumus;
+    });
 
-        // Summa
-        let kogumaksumus = betoonMaksumus + sillustikMaksumus + liivMaksumus + muldMaksumus;
+    // Näitame täishinda
+    let taisHind = kogusumma;
+    let allahindlus = 0;
 
-        // Kuvame vastuse
-        document.getElementById("vastus").textContent = `Hind: ${kogumaksumus.toFixed(2)} €`;
+    // Kontrollime, kas kogusumma on üle 500 euro
+    if (kogusumma > 500) {
+        allahindlus = kogusumma * 0.15;
+        kogusumma -= allahindlus;
+        document.getElementById("vastus").textContent = `Täishind: ${taisHind.toFixed(2)} €. Soodustus: ${allahindlus.toFixed(2)} €. Kogusumma pärast 15% soodustust: ${kogusumma.toFixed(2)} €.`;
+    } else {
+        document.getElementById("vastus").textContent = `Kogusumma: ${taisHind.toFixed(2)} € (täishind).`;
     }
+}
 </script>
 
 </body>

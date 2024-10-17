@@ -9,7 +9,8 @@
 
 ## Kasutamine
 
-1) Kui kasutad GitHubi, klooni projekt käsuga: git clon https://github.com/stenelisson/homework.git
-2) Avage index.html fail oma brauseris.
-3) Sisesta materjalide kogused tonnides ja klõpsa nuppu **Arvuta kogu summa**.
-4) Näed kohe tulemusi täishinda ja võimaliku allahindluse summat.
+1) Saab vaatada siit: https://stenelisson.github.io/homework/
+2) Kui kasutad GitHubi, klooni projekt käsuga: git clon https://github.com/stenelisson/homework.git
+3) Avage index.html fail oma brauseris.
+4) Sisesta materjalide kogused tonnides ja klõpsa nuppu **Arvuta kogu summa**.
+5) Näed kohe tulemusi täishinda ja võimaliku allahindluse summat.
